@@ -20,7 +20,7 @@ int main() {
     scanf("%c", &estado1);
 
     printf("Informe o código da carta, representado por um número: ");
-    scanf("%s", codigo1);
+    scanf("%s", codigo1); //Strig não necessita de "&".
 
     printf("Informe o nome da primeira cidade: ");
     scanf("%s", nome1); //Strig não necessita de "&".
@@ -52,10 +52,10 @@ int main() {
     //Solicitando para o usuário entrar com as informações da segunda carta, e escaneando os dados informados.
     printf("Carta 2:\n");
     printf("Informe a letra correspondente ao segundo estado: ");
-    scanf(" %c",&estado2);
+    scanf(" %c",&estado2); // Foi inserido um espaço antes do especificador de formato para corrigir o erro de "reconhecimento de ENTER como caracter".
 
     printf("Informe o código da carta, representado por um número: ");
-    scanf("%s", codigo2);
+    scanf("%s", codigo2); //Strig não necessita de "&".
 
     printf("Informe o nome da segunda cidade: ");
     scanf("%s", nome2); //Strig não necessita de "&".
