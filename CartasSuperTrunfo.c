@@ -5,15 +5,17 @@
 int main() {
     
     //Definindo as variáveis para as duas cartas.
-    int pturistico1 = 30, pturistico2 = 20; //Variável ponto turístico para as duas cartas (em int por ser número inteiro).
-    int populacao1 = 128, populacao2 = 253; //Variável população para as duas cartas (em int por ser número inteiro).
+    int pturistico1, pturistico2; //Variável ponto turístico para as duas cartas (em int por ser número inteiro).
+    int populacao1, populacao2; //Variável população para as duas cartas (em int por ser número inteiro).
     char codigo1[6] = "01", codigo2[6] = "05"; //Variável código para as duas cartas (em char por ser número inteiro + aracter).
     char estado1, estado2; //Variável Estado para as duas cartas (em char por ser conjunto de caracteres).***
     char nome1[20] = "Campinas", nome2[20] = "Manaus"; //Variável nome da cidade para as duas cartas (em char por ser conjunto de caracteres).
-    float area1 = 2.2, area2 = 7.5; //Variável área para as duas cartas (em float por ser decimal).
-    float pib1 = 1.7, pib2 = 2.5; //Variável PIB para as duas cartas (em float por ser decimal).
-
-   
+    float area1, area2; //Variável área para as duas cartas (em float por ser decimal).
+    float pib1, pib2; //Variável PIB para as duas cartas (em float por ser decimal).
+    float denPopulacional1, denPopulacional2; // Variável Densidade Populacional das duas cartas, em float por ser número decimal. **NÍVEL AVENTUREIRO**
+    float pibCapita1, pibCapita2; // Variável PIB per Capita das duas cartas, em float por ser número decimal. **NÍVEL AVENTUREIRO**
+    
+       
     //Solicitando para o usuário entrar com as informações da primeira carta, e escaneando os dados informados.
     printf("Carta 1:\n");
     printf("Informe a letra correnpondente ao primeiro Estado: ");
@@ -37,9 +39,13 @@ int main() {
     printf("Informe o número de pontos turísticos da primeira cidade: ");
     scanf("%d", &pturistico1);
 
+    // Definindo o cálculo das variáveis. **NÍVEL AVENTUREIRO**
+    denPopulacional1 = populacao1 / area1;
+    pibCapita1 = pib1 / populacao1;
+    pibCapita1 *= 1000000000; // Vezes 1 bilhão, para converter o resultado para "reais"
 
     //Exibindo as informações finais no terminal do usuário a respeito da primeira carta.
-    printf("Carta 1:\n");
+    printf("\nCarta 1:\n");
     printf("Estado: %c\n", estado1);
     printf("Código: %c%s\n", estado1, codigo1); //Duas variáveis para que exiba a letra do Estado e o código dele juntos.
     printf("Nome da Cidade: %s\n", nome1);
@@ -47,10 +53,12 @@ int main() {
     printf("Área: %.2f km²\n", area1); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("PIB: %.2f Bilhões de Reais\n", pib1); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("Número de Pontos Turísticos: %d\n", pturistico1);
-
+    printf("Densidade Populacional: %.2f hab/Km²\n", denPopulacional1); //**NÍVEL AVENTUREIRO**
+    printf("PIB per Capita: %.2f reais\n", pibCapita1); //**NÍVEL AVENTUREIRO**
+   
     
     //Solicitando para o usuário entrar com as informações da segunda carta, e escaneando os dados informados.
-    printf("Carta 2:\n");
+    printf("\nCarta 2:\n");
     printf("Informe a letra correspondente ao segundo estado: ");
     scanf(" %c",&estado2); // Foi inserido um espaço antes do especificador de formato para corrigir o erro de "reconhecimento de ENTER como caracter".
 
@@ -72,9 +80,13 @@ int main() {
     printf("Informe o número de pontos turísticos da segunda cidade: ");
     scanf("%d", &pturistico2);
 
+    // Definindo o cálculo das variáveis. **NÍVEL AVENTUREIRO**
+    denPopulacional2 = populacao2 / area2;
+    pibCapita2 = pib2 / populacao2;
+    pibCapita2 *= 1000000000; // Vezes 1 bilhão, para converter o resultado para "reais"
 
     //Exibindo as informações finais no terminal do usuário a respeito da segunda carta.
-    printf("Carta 2:\n");
+    printf("\nCarta 2:\n");
     printf("Estado: %c\n", estado2);
     printf("Código: %c%s\n", estado2, codigo2); //Duas variáveis para que exiba a letra do Estado e o código dele juntos.
     printf("Nome da Cidade: %s\n", nome2);
@@ -82,6 +94,8 @@ int main() {
     printf("Área: %.2f km²\n", area2); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("PIB: %.2f Bilhões de Reais\n", pib2); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("Número de Pontos Turísticos: %d\n", pturistico2);
+    printf("Densidade Populacional: %.2f hab/Km²\n", denPopulacional2); //**NÍVEL AVENTUREIRO**
+    printf("PIB per Capita: %.2f reais\n", pibCapita2); //**NÍVEL AVENTUREIRO**
 
     return 0;
 }
