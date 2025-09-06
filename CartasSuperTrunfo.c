@@ -6,15 +6,24 @@ int main() {
     
     //Definindo as variáveis para as duas cartas.
     int pturistico1, pturistico2; //Variável ponto turístico para as duas cartas (em int por ser número inteiro).
-    int populacao1, populacao2; //Variável população para as duas cartas (em int por ser número inteiro).
+    unsigned long int populacao1, populacao2; //Variável população para as duas cartas
     char codigo1[6] = "01", codigo2[6] = "05"; //Variável código para as duas cartas (em char por ser número inteiro + aracter).
     char estado1, estado2; //Variável Estado para as duas cartas (em char por ser conjunto de caracteres).***
     char nome1[20] = "Campinas", nome2[20] = "Manaus"; //Variável nome da cidade para as duas cartas (em char por ser conjunto de caracteres).
     float area1, area2; //Variável área para as duas cartas (em float por ser decimal).
     float pib1, pib2; //Variável PIB para as duas cartas (em float por ser decimal).
+   
     float denPopulacional1, denPopulacional2; // Variável Densidade Populacional das duas cartas, em float por ser número decimal. **NÍVEL AVENTUREIRO**
     float pibCapita1, pibCapita2; // Variável PIB per Capita das duas cartas, em float por ser número decimal. **NÍVEL AVENTUREIRO**
     
+    float superPoder1, superPoder2;
+    int pturisticoBatalha;
+    unsigned long int populacaoBatalha;
+    float areaBatalha;
+    float pibBatalha;
+    float denPopulacionalBatalha;
+    float pibCapitaBatalha;
+    float superPoderBatalha;
        
     //Solicitando para o usuário entrar com as informações da primeira carta, e escaneando os dados informados.
     printf("Carta 1:\n");
@@ -28,7 +37,7 @@ int main() {
     scanf("%s", nome1); //Strig não necessita de "&".
 
     printf("Informe a população da primeira cidade: ");
-    scanf("%d", &populacao1);
+    scanf("%lu", &populacao1);
 
     printf("Informe a área da primeira cidade em kilometros quadrados: ");
     scanf("%f", &area1);
@@ -49,7 +58,7 @@ int main() {
     printf("Estado: %c\n", estado1);
     printf("Código: %c%s\n", estado1, codigo1); //Duas variáveis para que exiba a letra do Estado e o código dele juntos.
     printf("Nome da Cidade: %s\n", nome1);
-    printf("População: %d\n", populacao1);
+    printf("População: %lu\n", populacao1);
     printf("Área: %.2f km²\n", area1); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("PIB: %.2f Bilhões de Reais\n", pib1); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("Número de Pontos Turísticos: %d\n", pturistico1);
@@ -69,7 +78,7 @@ int main() {
     scanf("%s", nome2); //Strig não necessita de "&".
 
     printf("Informe a população da segunda cidade: ");
-    scanf("%d", &populacao2);
+    scanf("%lu", &populacao2);
 
     printf("Informe a área da segunda cidade em kilometros quadrados: ");
     scanf("%f", &area2);
@@ -90,12 +99,36 @@ int main() {
     printf("Estado: %c\n", estado2);
     printf("Código: %c%s\n", estado2, codigo2); //Duas variáveis para que exiba a letra do Estado e o código dele juntos.
     printf("Nome da Cidade: %s\n", nome2);
-    printf("População: %d\n", populacao2);
+    printf("População: %lu\n", populacao2);
     printf("Área: %.2f km²\n", area2); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("PIB: %.2f Bilhões de Reais\n", pib2); //"%.2f" para que o dado seja exibido com duas casas decimais.
     printf("Número de Pontos Turísticos: %d\n", pturistico2);
     printf("Densidade Populacional: %.2f hab/Km²\n", denPopulacional2); //**NÍVEL AVENTUREIRO**
     printf("PIB per Capita: %.2f reais\n", pibCapita2); //**NÍVEL AVENTUREIRO**
+
+    // Criação dos Super Poderes. ***NÍVEL MESTRE***
+    superPoder1 = ((float) populacao1 + area1 + pib1 + (float) pturistico1 + pibCapita1) + (1 / denPopulacional1);
+    superPoder2 = ((float) populacao2 + area2 + pib2 + (float) pturistico2 + pibCapita2) + (1 / denPopulacional2);
+
+
+    // Criando comparações dos atributos.
+    pturisticoBatalha = pturistico1 > pturistico2;
+    populacaoBatalha = populacao1 > populacao2;
+    areaBatalha = area1 > area2;
+    pibBatalha = pib1 > pib2;
+    denPopulacionalBatalha = (1 / denPopulacional1) < (1 / denPopulacional2);
+    pibBatalha = pibCapita1 > pibCapita2;
+    superPoderBatalha = superPoder1 > superPoder2;
+
+    // Exibindo resutado da batalha.
+    printf("\nComparação de Cartas:\n");
+    printf("População: %lu\n", populacaoBatalha);
+    printf("Área: %.2f\n", areaBatalha);
+    printf("PIB: %.2f\n", pibBatalha);
+    printf("Pontos Turísticos: %d\n", pturisticoBatalha);
+    printf("Densidade Populacional: %.2f\n", denPopulacionalBatalha);
+    printf("PIB per Capita: %.2f\n", pibCapitaBatalha);
+    printf("* Super Poder *: %.2f", superPoderBatalha);
 
     return 0;
 }
