@@ -16,14 +16,15 @@ int main() {
     float denPopulacional1, denPopulacional2; // Variável Densidade Populacional das duas cartas, em float por ser número decimal. **NÍVEL AVENTUREIRO**
     float pibCapita1, pibCapita2; // Variável PIB per Capita das duas cartas, em float por ser número decimal. **NÍVEL AVENTUREIRO**
     
+    //Criando variáveis do NÍVEL MESTRE
     float superPoder1, superPoder2;
-    int pturisticoBatalha;
-    unsigned long int populacaoBatalha;
-    float areaBatalha;
-    float pibBatalha;
-    float denPopulacionalBatalha;
-    float pibCapitaBatalha;
-    float superPoderBatalha;
+    int pturisticoBatalha; // Tipo "int" pois deverá exibir o resultado comparativo (1 ou 0).
+    int populacaoBatalha; // Tipo "int" pois deverá exibir o resultado comparativo (1 ou 0).
+    int areaBatalha; // Tipo "int" pois deverá exibir o resultado comparativo (1 ou 0).
+    int denPopulacionalBatalha; // Tipo "int" pois deverá exibir o resultado comparativo (1 ou 0).
+    int pibBatalha; // Tipo "int" pois deverá exibir o resultado comparativo (1 ou 0).
+    int pibCapitaBatalha; // Tipo "int" pois deverá exibir o resultado comparativo (1 ou 0).
+    int superPoderBatalha; // Tipo "int" pois deverá exibir o resultado comparativo (1 ou 0).
        
     //Solicitando para o usuário entrar com as informações da primeira carta, e escaneando os dados informados.
     printf("Carta 1:\n");
@@ -49,9 +50,12 @@ int main() {
     scanf("%d", &pturistico1);
 
     // Definindo o cálculo das variáveis. **NÍVEL AVENTUREIRO**
-    denPopulacional1 = populacao1 / area1;
-    pibCapita1 = pib1 / populacao1;
+    denPopulacional1 = (float)populacao1 / area1; // Comversão explicita para variável "população".
+    pibCapita1 = pib1 / (float)populacao1; // Comversão explicita para variável "população".
     pibCapita1 *= 1000000000; // Vezes 1 bilhão, para converter o resultado para "reais"
+    
+    // Definindo cálculo do Super Poder. ***NÍVEL MESTRE***
+    superPoder1 = ((float) populacao1 + area1 + pib1 + (float) pturistico1 + pibCapita1) + (1 / denPopulacional1); // Comversão explicita para variável "população" e "ponto turístico".
 
     //Exibindo as informações finais no terminal do usuário a respeito da primeira carta.
     printf("\nCarta 1:\n");
@@ -64,7 +68,7 @@ int main() {
     printf("Número de Pontos Turísticos: %d\n", pturistico1);
     printf("Densidade Populacional: %.2f hab/Km²\n", denPopulacional1); //**NÍVEL AVENTUREIRO**
     printf("PIB per Capita: %.2f reais\n", pibCapita1); //**NÍVEL AVENTUREIRO**
-   
+    printf("Super Poder: %.2f\n", superPoder1); //***NÍVEL MESTRE***
     
     //Solicitando para o usuário entrar com as informações da segunda carta, e escaneando os dados informados.
     printf("\nCarta 2:\n");
@@ -90,9 +94,12 @@ int main() {
     scanf("%d", &pturistico2);
 
     // Definindo o cálculo das variáveis. **NÍVEL AVENTUREIRO**
-    denPopulacional2 = populacao2 / area2;
-    pibCapita2 = pib2 / populacao2;
+    denPopulacional2 = (float)populacao2 / area2; // Comversão explicita para variável "população".
+    pibCapita2 = pib2 / (float)populacao2; // Comversão explicita para variável "população".
     pibCapita2 *= 1000000000; // Vezes 1 bilhão, para converter o resultado para "reais"
+
+    // Definindo cálculo do Super Poder. ***NÍVEL MESTRE***
+    superPoder2 = ((float) populacao2 + area2 + pib2 + (float) pturistico2 + pibCapita2) + (1 / denPopulacional2); // Comversão explicita para variável "população" e "ponto turístico".
 
     //Exibindo as informações finais no terminal do usuário a respeito da segunda carta.
     printf("\nCarta 2:\n");
@@ -105,30 +112,27 @@ int main() {
     printf("Número de Pontos Turísticos: %d\n", pturistico2);
     printf("Densidade Populacional: %.2f hab/Km²\n", denPopulacional2); //**NÍVEL AVENTUREIRO**
     printf("PIB per Capita: %.2f reais\n", pibCapita2); //**NÍVEL AVENTUREIRO**
-
-    // Criação dos Super Poderes. ***NÍVEL MESTRE***
-    superPoder1 = ((float) populacao1 + area1 + pib1 + (float) pturistico1 + pibCapita1) + (1 / denPopulacional1);
-    superPoder2 = ((float) populacao2 + area2 + pib2 + (float) pturistico2 + pibCapita2) + (1 / denPopulacional2);
+    printf("Super Poder: %.2f\n", superPoder2); //***NÍVEL MESTRE***
 
 
-    // Criando comparações dos atributos.
+    // Criando comparações dos atributos. ***NÍVEL MESTRE***
     pturisticoBatalha = pturistico1 > pturistico2;
     populacaoBatalha = populacao1 > populacao2;
     areaBatalha = area1 > area2;
+    denPopulacionalBatalha = denPopulacional1 < denPopulacional2;
     pibBatalha = pib1 > pib2;
-    denPopulacionalBatalha = (1 / denPopulacional1) < (1 / denPopulacional2);
-    pibBatalha = pibCapita1 > pibCapita2;
+    pibCapitaBatalha = pibCapita1 > pibCapita2;
     superPoderBatalha = superPoder1 > superPoder2;
 
-    // Exibindo resutado da batalha.
+    // Exibindo resutado da batalha. ***NÍVEL MESTRE***
     printf("\nComparação de Cartas:\n");
-    printf("População: %lu\n", populacaoBatalha);
-    printf("Área: %.2f\n", areaBatalha);
-    printf("PIB: %.2f\n", pibBatalha);
+    printf("População: %d\n", populacaoBatalha);
+    printf("Área: %d\n", areaBatalha);
+    printf("PIB: %d\n", pibBatalha);
     printf("Pontos Turísticos: %d\n", pturisticoBatalha);
-    printf("Densidade Populacional: %.2f\n", denPopulacionalBatalha);
-    printf("PIB per Capita: %.2f\n", pibCapitaBatalha);
-    printf("* Super Poder *: %.2f", superPoderBatalha);
+    printf("Densidade Populacional: %d\n", denPopulacionalBatalha);
+    printf("PIB per Capita: %d\n", pibCapitaBatalha);
+    printf("* Super Poder *: %d\n", superPoderBatalha);
 
     return 0;
 }
