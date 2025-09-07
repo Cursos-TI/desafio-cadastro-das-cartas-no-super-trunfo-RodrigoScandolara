@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-// Desafio Jogo Super Trunfo Nível Iniciante
-
 int main() {
     
     //Definindo as variáveis para as duas cartas.
